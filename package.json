@@ -1,6 +1,6 @@
 {
   "name": "create-freactjs-app",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "模仿Create-React-App的create-freactjs-app node shell命令",
   "repository": {
     "type": "git",
