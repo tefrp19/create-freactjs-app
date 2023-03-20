@@ -2,7 +2,6 @@
   "name": "create-freactjs-app",
   "version": "0.1.1",
   "description": "模仿Create-React-App的create-freactjs-app node shell命令",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/tefrp19/create-freactjs-app"
@@ -13,5 +12,10 @@
   "bin": {
     "create-freactjs-app": "./index.js"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "cross-spawn": "^7.0.3",
+    "fs-extra": "^11.1.0",
+    "freactjs-scripts": "^0.0.2"
+  }
 }
