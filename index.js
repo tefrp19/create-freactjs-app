@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 const path = require('path')
 const fs = require('fs-extra')
 const os = require('os')
@@ -30,7 +29,6 @@ fs.writeFileSync( // 写入package.json文件
 );
 
 const originalDirectory = process.cwd();
-console.log(originalDirectory)
 
 process.chdir(root); // 切换node 进程的工作目录
 
@@ -38,15 +36,15 @@ process.chdir(root); // 切换node 进程的工作目录
 function install() {
     const devDependencies = [
         "freactjs",
-        '@babel/core',
-        "@babel/preset-env",
-        "@babel/preset-react",
-        "@rollup/plugin-babel",
-        "@rollup/plugin-node-resolve",
-        "rollup",
-        "rollup-plugin-import-css",
-        "rollup-plugin-livereload",
-        "rollup-plugin-serve"
+        // '@babel/core',
+        // "@babel/preset-env",
+        // "@babel/preset-react",
+        // "@rollup/plugin-babel",
+        // "@rollup/plugin-node-resolve",
+        // "rollup",
+        // "rollup-plugin-import-css",
+        // "rollup-plugin-livereload",
+        // "rollup-plugin-serve"
     ]
     return new Promise((resolve, reject) => {
         const child = spawn(
@@ -67,16 +65,21 @@ function install() {
 }
 
 install().then(() => {
-    const freactjsScriptsPath = path.dirname(
-        require.resolve('freactjs-scripts/package.json')
+    const CFAPath=path.dirname(
+        require.resolve('./package.json')
     );
-    console.log(freactjsScriptsPath)
+    console.log(CFAPath)
     // 2.下载新项目基本模板
     // 将template文件夹中的所有内容复制到新项目中
-    fs.copySync(path.join(freactjsScriptsPath, 'template'), root);
+    fs.copySync(path.join(CFAPath, 'template'), root);
 
     // 3.下载新项目配置文件（rollup、babel）
-    fs.copySync(path.join(freactjsScriptsPath, 'config'), root);
+    fs.copySync(path.join(CFAPath, 'config'), root);
 
+    console.log('创建项目成功')
+    console.log('输入：')
+    console.log(`cd ./${projectName}`)
+    console.log('npm run dev')
 })
+
 
